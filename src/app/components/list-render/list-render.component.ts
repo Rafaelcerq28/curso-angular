@@ -34,7 +34,7 @@ export class ListRenderComponent {
 
   //imprimindo a idade do animal quando clico no botão
   animalDetais = '';
-  showAge(animal: Animal) {
+  showAge(animal: Animal):void {
     //grava a idade do animal na variavel
     this.animalDetais = `o pet ${animal.name} tem ${animal.age} anos!`
   }

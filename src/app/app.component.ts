@@ -7,11 +7,13 @@ import { IfRenderComponent } from "./components/if-render/if-render.component";
 import { EventosComponent } from "./components/eventos/eventos.component";
 import { EmitterComponent } from "./components/emitter/emitter.component";
 import { ListRenderComponent } from "./components/list-render/list-render.component";
+import { PipesComponent } from "./components/pipes/pipes.component";
+import { TwoWayBindingComponent } from "./components/two-way-binding/two-way-binding.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FirstComponentComponent, ParentDataComponent, DirectivesComponent, IfRenderComponent, EventosComponent, EmitterComponent, ListRenderComponent],
+  imports: [RouterOutlet, FirstComponentComponent, ParentDataComponent, DirectivesComponent, IfRenderComponent, EventosComponent, EmitterComponent, ListRenderComponent, PipesComponent, TwoWayBindingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
