@@ -1,0 +1,8 @@
+<div class="class">
+    <p *ngIf="show">exibindo mensagem</p>
+    <button (click)="showMessage()">Click me</button>
+    <div >
+        <p (mouseover)="mouseOverMessage()"(mouseleave)="mouseLeftMessage()">{{phrase}}</p>
+
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="class">
+    <h1>O numero é: {{myNumber}}</h1>
+    <!-- Chama o component dentro de um component-->
+     <!-- e chama o  @Output() changeNumber-->
+    <app-change-number (changeNumber)="onChangeNumber()"></app-change-number>
+</div>

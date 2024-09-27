@@ -1,0 +1,19 @@
+<div class="class">
+    <!-- 
+    Trabalhando com if/else 
+    nesse primeiro caso mostra a mensagem porque o canShow é true
+    -->
+    <div *ngIf="canShow ">Mostrando isso porque foi permitido</div>
+    <p>{{canShow}}</p>
+
+    <!-- Nesse caso não mostra pois o name não é rafael, então temos um else -->
+    <h2 *ngIf="name === 'rafael'; else nameNotFound">Mostrando isso porque passou na validação do nome</h2>
+    
+    <p>{{name}}</p>
+    <!-- detalhe: esse template pe chamado antes do <p> acima
+        pois faz parte da função anterior    
+    -->
+    <ng-template #nameNotFound>
+        <h2>Nome incorreto </h2>
+    </ng-template>
+</div>
