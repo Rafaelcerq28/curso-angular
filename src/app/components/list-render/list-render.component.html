@@ -1,10 +1,10 @@
 <div class="class">
-    <h2>Animais:</h2>
+    <h2>Animais: s</h2>
     <!-- brincando com evento e lista
      o botão abaixo chama o metodo showList quando clicado (click) é o evento de click do mouse-->
     <button (click)="showList()">Show the list</button>
     <!-- se show for true ele exibe a lista -->
-    <div *ngIf="show">
+    <div *ngIf="show"> 
         <ul>
             <!-- fazendo a iteraçao no objeto animals -->
             <li *ngFor="let animal of animals">
@@ -12,7 +12,8 @@
                 Nome: {{animal.name}} - Type: {{animal.type}}
             <!-- quando clico no botão ele pega o animal e passa para o metodo como parametro -->
             <button (click)="showAge(animal)">Show Age</button>
-            </li>
+            <button (click)="removeAnimal(animal)">Excluir</button>
+        </li>
         </ul>
         <!-- exibe a idade do animal -->
         <h3>{{animalDetais}}</h3>
