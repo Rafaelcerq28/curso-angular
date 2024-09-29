@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 export class ListService {
   //importar o httpClient
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
 
 private apiUrl = 'http://localhost:3000/animals';
@@ -20,5 +20,14 @@ private apiUrl = 'http://localhost:3000/animals';
     return animals.filter((a) => animal.name !== a.name);
   }
 
+  //method que faz o request para a nossa api
+  getAll(): Observable<Animal[]>{
+    return this.httpClient.get<Animal[]>(this.apiUrl);    
+  }
+
+  getPokemon(): Observable<any>{
+    this.apiUrl = 'https://pokeapi.co/api/v2/pokemon/pikachu'
+    return this.httpClient.get(this.apiUrl);
+  }
 
 }

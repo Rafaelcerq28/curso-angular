@@ -1,8 +1,11 @@
 //PARA FUNCIONAR O FOR IMPORTAR O COMMOM MODULE 
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';  
 //Importando a interface Animal
 import { Animal } from '../../Animal';
+
+//IMPORTAR PARA FUNCIONAR O REQUEST
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 //Importando o service 
 //Comando para criar uma service ng generate service <pasta>/nome
@@ -14,7 +17,8 @@ import { ListService } from '../../service/list.service';
   selector: 'app-list-render',
   standalone: true,
   //ADICIONAR ELE AQUI
-  imports: [CommonModule],
+  //Adicionar HttpClientModule, JsonPipe
+  imports: [CommonModule,HttpClientModule, JsonPipe], 
   templateUrl: './list-render.component.html',
   styleUrl: './list-render.component.css'
 })
@@ -29,7 +33,9 @@ export class ListRenderComponent {
   numeros = [1,2,3,4,5,6];
 //private nomeParaOService: NomeDoServiceQueVouUsar
   constructor(private listService: ListService){
+    //CHAMO MEU GET
     this.getAnimals();
+    this.getPokemon();
   }
 
   //brincando com lista e eventos
@@ -52,9 +58,26 @@ export class ListRenderComponent {
     this.animals = this.listService.remove(this.animals,animal);
   }
 
+  //Metodo que faz o request na nossa service
   getAnimals(): void{
     //adicionando o subscribe porque o angular pede isso quando usamos observable
     //atribuindo os animais no meu this.animals que é o array
-    //this.listService.getAll().subscribe((animals => (this.animals = animals)));
+    this.listService.getAll().subscribe((animals => (this.animals = animals)));
   }
+  pokemonName: string = "";
+  pokemon: any;
+  getPokemon(): void{
+    //this.listService.getPokemon().subscribe((data: any) => {this.pokemon = data});
+    this.listService.getPokemon().subscribe(
+      (data: any) => {
+        this.pokemon = data;
+        this.pokemonName = data.name;
+      },
+      (error) => {
+        console.error('Erro ao obter dados do Pokémon:', error);
+        this.pokemon = "erro";
+      }
+    );
+  }
+ 
 }
