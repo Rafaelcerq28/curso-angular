@@ -9,8 +9,10 @@ import { Observable } from 'rxjs';
 })
 
 export class ListService {
+
   //importar o httpClient
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
 
 private apiUrl = 'http://localhost:3000/animals';
@@ -30,4 +32,8 @@ private apiUrl = 'http://localhost:3000/animals';
     return this.httpClient.get(this.apiUrl);
   }
 
+  getItem(id:number): Observable<Animal> {
+    //faz a requisição concatenando o id
+    return this.httpClient.get<Animal>(`${this.apiUrl}/${id}`);
+  }
 }

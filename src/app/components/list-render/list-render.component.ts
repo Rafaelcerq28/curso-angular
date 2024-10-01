@@ -3,7 +3,7 @@ import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';  
 //Importando a interface Animal
 import { Animal } from '../../Animal';
-
+import { RouterOutlet,RouterLink,RouterLinkActive } from '@angular/router';
 //IMPORTAR PARA FUNCIONAR O REQUEST
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -18,7 +18,7 @@ import { ListService } from '../../service/list.service';
   standalone: true,
   //ADICIONAR ELE AQUI
   //Adicionar HttpClientModule, JsonPipe
-  imports: [CommonModule,HttpClientModule, JsonPipe], 
+  imports: [CommonModule,HttpClientModule, JsonPipe,RouterLink,RouterLinkActive], 
   templateUrl: './list-render.component.html',
   styleUrl: './list-render.component.css'
 })
@@ -33,7 +33,7 @@ export class ListRenderComponent {
   numeros = [1,2,3,4,5,6];
 //private nomeParaOService: NomeDoServiceQueVouUsar
   constructor(private listService: ListService){
-    //CHAMO MEU GET
+    //CHAMO MEU GET que fica na ListService
     this.getAnimals();
     this.getPokemon();
   }
@@ -61,11 +61,14 @@ export class ListRenderComponent {
   //Metodo que faz o request na nossa service
   getAnimals(): void{
     //adicionando o subscribe porque o angular pede isso quando usamos observable
-    //atribuindo os animais no meu this.animals que é o array
+    //atribuindo os animais no meu this.animals que é o array de animals
     this.listService.getAll().subscribe((animals => (this.animals = animals)));
   }
+
+
   pokemonName: string = "";
   pokemon: any;
+
   getPokemon(): void{
     //this.listService.getPokemon().subscribe((data: any) => {this.pokemon = data});
     this.listService.getPokemon().subscribe(

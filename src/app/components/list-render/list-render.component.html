@@ -9,7 +9,10 @@
             <!-- fazendo a iteraçao no objeto animals -->
             <li *ngFor="let animal of animals">
                 <!-- chamando o objeto animals e o nome dele -->
-                Nome: {{animal.name}} - Type: {{animal.type}}
+                 <!-- passando tambem o link para acessar a pagina do animal (para fazer isso basta adicionar um novo
+                  component, salvar ele no routes usando "list/:id" por ex e utilizar o routerLink))-->
+                Nome: <a routerLink="/list/{{animal.id}}">{{animal.name}}</a> - Type: {{animal.type}}
+                Nome: <a href="/list/{{animal.id}}">{{animal.name}}</a> - Type: {{animal.type}}
             <!-- quando clico no botão ele pega o animal e passa para o metodo como parametro -->
             <button (click)="showAge(animal)">Show Age</button>
             <button (click)="removeAnimal(animal)">Excluir</button>
@@ -17,6 +20,7 @@
         </ul>
         <!-- exibe a idade do animal -->
          <p>Pokemon: {{pokemonName}}</p>
+         <p>pokemon name = {{pokemon.name}}</p>
          <pre>{{pokemon | json}}</pre>
         <h3>{{animalDetais}}</h3>
     <!-- imprimindo uma lista de numeros -->
