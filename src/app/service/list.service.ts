@@ -16,10 +16,10 @@ export class ListService {
 
 
 private apiUrl = 'http://localhost:3000/animals';
-
-  remove(animals:Animal[],animal:Animal){
+private apiUrlpok = '';
+  remove(id:number){
     //filtra os animais na lista e retorna quando for diferente do animal clicado 
-    return animals.filter((a) => animal.name !== a.name);
+    return this.httpClient.delete<Animal>(`${this.apiUrl}/${id}`);
   }
 
   //method que faz o request para a nossa api
@@ -28,8 +28,8 @@ private apiUrl = 'http://localhost:3000/animals';
   }
 
   getPokemon(): Observable<any>{
-    this.apiUrl = 'https://pokeapi.co/api/v2/pokemon/pikachu'
-    return this.httpClient.get(this.apiUrl);
+    this.apiUrlpok = 'https://pokeapi.co/api/v2/pokemon/pikachu'
+    return this.httpClient.get(this.apiUrlpok);
   }
 
   getItem(id:number): Observable<Animal> {

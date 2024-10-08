@@ -55,7 +55,8 @@ export class ListRenderComponent {
   removeAnimal(animal:Animal){
     console.log(`removendo animal...${animal.name}`);
     //chama o metodo remove da listService e atualiza a lista de animais
-    this.animals = this.listService.remove(this.animals,animal);
+    this.animals = this.animals.filter((a) => animal.name !== a.name);
+    this.listService.remove(animal.id).subscribe();
   }
 
   //Metodo que faz o request na nossa service
