@@ -10,12 +10,13 @@ import { EmitterComponent } from "./components/emitter/emitter.component";
 import { ListRenderComponent } from "./components/list-render/list-render.component";
 import { PipesComponent } from "./components/pipes/pipes.component";
 import { TwoWayBindingComponent } from "./components/two-way-binding/two-way-binding.component";
+import { MapsComponent } from "./components/maps/maps.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   //Adicionar RouterLink,RouterLinkActive para funcionar os links
-  imports: [RouterOutlet, FirstComponentComponent, ParentDataComponent, DirectivesComponent, IfRenderComponent, EventosComponent, EmitterComponent, ListRenderComponent, PipesComponent, TwoWayBindingComponent,RouterLink,RouterLinkActive],
+  imports: [RouterOutlet, FirstComponentComponent, ParentDataComponent, DirectivesComponent, IfRenderComponent, EventosComponent, EmitterComponent, ListRenderComponent, PipesComponent, TwoWayBindingComponent, RouterLink, RouterLinkActive, MapsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
